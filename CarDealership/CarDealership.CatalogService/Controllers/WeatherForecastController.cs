@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarDealership.CatalogService.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,13 @@ namespace CarDealership.CatalogService.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private CatalogContext _catalogContext;
+        public WeatherForecastController(CatalogContext catalogContext, ILogger<WeatherForecastController> logger)
+        {
+            _catalogContext = catalogContext;
+            _logger = logger;
+        }
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -18,14 +27,10 @@ namespace CarDealership.CatalogService.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
-        }
-
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var cars = _catalogContext.CarModels.Include(x => x.CarManufacturer).ToList();
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
