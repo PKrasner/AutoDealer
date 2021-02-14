@@ -4,19 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CarDealership.CatalogService.Data
+namespace CarDealership.CatalogService.Models
 {
-    public class CarModel
+    public class CarOptionDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-
-        public int CarManufacturerId { get; set; }
-
-        [ForeignKey("CarManufacturerId")]
-        public virtual CarManufacturer CarManufacturer { get; set; }
-        public virtual IList<CarOptionGroup> CarOptionGroups { get; set; }
     }
 }

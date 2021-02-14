@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace CarDealership.CatalogService.Data
 {
-    public class CarModel
+    public class CarOption
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
 
-        public int CarManufacturerId { get; set; }
+        public int CarOptionGroupId { get; set; }
 
-        [ForeignKey("CarManufacturerId")]
-        public virtual CarManufacturer CarManufacturer { get; set; }
-        public virtual IList<CarOptionGroup> CarOptionGroups { get; set; }
+        public virtual CarOptionGroup CarOptionGroup { get; set; }
     }
 }

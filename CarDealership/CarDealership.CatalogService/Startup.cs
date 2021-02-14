@@ -29,7 +29,9 @@ namespace CarDealership.CatalogService
             services.AddSwaggerDocument();
             services.AddControllers();
             services.AddDbContext<CatalogContext>(options =>
-        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                );
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
