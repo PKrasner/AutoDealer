@@ -1,5 +1,4 @@
-﻿using CatalogServiceDto;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -28,13 +27,13 @@ namespace CarDealership.OrderService.Controllers
         [HttpGet]
         public async Task<IEnumerable<WeatherForecast>> Get()
         {
-            using(var httpClient = new HttpClient() )
-            {
-                var catalogClient = new swaggerClient(httpClient);
-                catalogClient.BaseUrl = "http://localhost:5000";
+            //using(var httpClient = new HttpClient() )
+            //{
+            //    var catalogClient = new swagger1Client(httpClient);
+            //    catalogClient.BaseUrl = "http://localhost:5000";
 
-                var data = await catalogClient.GetAsync();
-            }
+            //    var data = await catalogClient.GetByIdAsync(1);
+            //}
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

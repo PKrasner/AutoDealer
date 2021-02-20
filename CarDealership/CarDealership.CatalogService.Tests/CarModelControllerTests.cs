@@ -1,13 +1,8 @@
-using AutoMapper;
 using CarDealership.CatalogService.Controllers;
-using CarDealership.CatalogService.Data;
 using CarDealership.CatalogService.Tests.Fakes;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CarDealership.CatalogService.Tests
 {
@@ -24,20 +19,20 @@ namespace CarDealership.CatalogService.Tests
         }
 
         [TestMethod]
-        public void TestFetchCarModelList()
+        public async Task TestFetchCarModelList()
         {
-            var result = _carModelsController.Get();
-            Assert.IsTrue(result.ToList().Count > 0);
+            var response = await _carModelsController.Get();
+            Assert.IsTrue(response.ToList().Count > 0);
         }
 
         [TestMethod]
-        public void TestFetchCarModelById()
+        public async Task TestFetchCarModelById()
         {
-            var result = _carModelsController.GetById(1);
+            var response = await _carModelsController.GetById(1);
 
-            Assert.IsTrue(result != null);
-            Assert.IsTrue(result.CarOptionGroups.Count > 0);
-            Assert.IsTrue(result.CarOptionGroups.SelectMany(x => x.CarOptions).Count() > 0);
+            Assert.IsTrue(response != null);
+            Assert.IsTrue(response.CarOptionGroups.Count > 0);
+            Assert.IsTrue(response.CarOptionGroups.SelectMany(x => x.CarOptions).Count() > 0);
         }
     }
 }

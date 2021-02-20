@@ -24,22 +24,22 @@ namespace CarDealership.CatalogService.Controllers
         }
 
         [HttpGet]
-        public List<CarModelDto> Get()
+        public async Task<List<CarModelDto>> Get()
         {
-            var carModels = _catalogContext.CarModels
+            var carModels = await _catalogContext.CarModels
                 .Include(x => x.CarManufacturer)
-                .ToList();
+                .ToListAsync();
             return _mapper.Map<List<CarModelDto>>(carModels);
         }
 
         [HttpGet("{id}")]
-        public CarModelFullDto GetById(int id)
+        public async Task<CarModelFullDto> GetById(int id)
         {
-            var carModel = _catalogContext.CarModels
+            var carModel = await _catalogContext.CarModels
                 .Include(x => x.CarManufacturer)
                 .Include(x => x.CarOptionGroups)
                 .Include("CarOptionGroups.CarOptions")
-                .FirstOrDefault(c => c.Id == id);
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (carModel == null)
                 throw new ArgumentException($"No car model found with id {id}", "id");

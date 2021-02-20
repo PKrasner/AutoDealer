@@ -1,4 +1,6 @@
 using CarDealership.CatalogService.Data;
+using CarDealership.CatalogService.GraphQL.Schemas;
+using GraphQL.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +34,11 @@ namespace CarDealership.CatalogService
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddScoped<CatalogSchema>();
+            services.AddGraphQL()
+                .AddSystemTextJson()
+                .AddGraphTypes(ServiceLifetime.Scoped);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +60,8 @@ namespace CarDealership.CatalogService
 
             app.UseOpenApi();
             app.UseSwaggerUi3();
+            app.UseGraphQL<CatalogSchema>();
+            app.UseGraphQLPlayground();
         }
     }
 }
