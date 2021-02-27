@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,9 @@ namespace CarDealership.CatalogService
             services.AddSwaggerDocument();
             services.AddControllers();
             services.AddDbContext<CatalogContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                options
+                .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()))
+                .UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
             services.AddAutoMapper(typeof(Startup));
 

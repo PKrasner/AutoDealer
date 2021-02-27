@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <Nullable>disable</Nullable>
+    <UserSecretsId>81cd4e83-40ba-4c7a-b8fe-722d6577129c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
