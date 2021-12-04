@@ -133,5 +133,27 @@ namespace CarDealership.CatalogService.Tests
         }
 
 
+        [TestMethod]
+        public void FilterManufacturerId()
+        {
+            var query = @"
+                {
+  carModels (carManufacturerId: 1) {
+    name
+  }
+}
+            ";
+
+            var expected =
+                @"{
+    ""carModels"": [
+      {
+                ""name"": ""test1""
+      }
+    ]
+    }";
+
+            AssertQuerySuccess(query, expected);
+        }
     }
 }

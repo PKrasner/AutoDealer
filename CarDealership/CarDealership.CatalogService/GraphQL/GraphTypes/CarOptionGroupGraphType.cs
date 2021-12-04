@@ -16,11 +16,8 @@ namespace CarDealership.CatalogService.GraphQL.GraphTypes
             Field(x => x.MinOptions);
             Field(x => x.MaxOptions);
 
-            Field<ListGraphType<CarOptionGraphType>, IList<CarOption>>("carOptions").Resolve(
-           ctx =>
-           {
-               return ctx.Source.CarOptions;
-           });
+            Field<ListGraphType<CarOptionGraphType>, IList<CarOption>>("carOptions")
+                .Resolve(ctx => ctx.Source.CarOptions);
         }
     }
 }

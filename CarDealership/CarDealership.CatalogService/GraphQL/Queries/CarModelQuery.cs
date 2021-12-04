@@ -1,5 +1,6 @@
 ﻿using CarDealership.CatalogService.Data;
 using CarDealership.CatalogService.GraphQL.GraphTypes;
+using GraphQL;
 using GraphQL.Language.AST;
 using GraphQL.Types;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,9 @@ namespace CarDealership.CatalogService.GraphQL.Queries
                 "carModels",
                 resolve: context =>
                 {
+                    var id = context.GetArgument<int>("id");
+                    var carManufacturerId = context.GetArgument<int>("carManufacturerId");
+
                     var nodes = _fetchNodes(context.FieldAst);
 
                     IQueryable<CarModel> carModels = catalogContext.CarModels;
@@ -31,8 +35,19 @@ namespace CarDealership.CatalogService.GraphQL.Queries
                     if (nodes.Contains("carOptions"))
                         carModels = carModels.Include("CarOptionGroups.CarOptions");
 
+                    
+                    if (id != 0)
+                        carModels = carModels.Where(cm => cm.Id == id);
+
+                    if (carManufacturerId != 0)
+                        carModels = carModels.Where(cm => cm.CarManufacturerId == carManufacturerId);
+
                     return carModels.ToList();
-                });
+                }, 
+                arguments: new QueryArguments(
+        new QueryArgument<IdGraphType> { Name = "id", DefaultValue = 0 },
+        new QueryArgument<IdGraphType> { Name = "carManufacturerId", DefaultValue = 0 }
+      ));
         }
 
         private List<string> _fetchNodes(Field node)

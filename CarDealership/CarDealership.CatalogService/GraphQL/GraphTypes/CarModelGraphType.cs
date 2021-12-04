@@ -19,11 +19,8 @@ namespace CarDealership.CatalogService.GraphQL.GraphTypes
             Field<CarManufacturerGraphType, CarManufacturer>("carManufacturer").Resolve(x => x.Source.CarManufacturer);
 
 
-            Field<ListGraphType<CarOptionGroupGraphType>, IList<CarOptionGroup>>("carOptionGroups").Resolve(
-           ctx =>
-           {
-               return ctx.Source.CarOptionGroups;
-           });
+            Field<ListGraphType<CarOptionGroupGraphType>, IList<CarOptionGroup>>("carOptionGroups")
+                .Resolve(ctx => ctx.Source.CarOptionGroups);
         }
     }
 }
