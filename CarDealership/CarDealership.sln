@@ -7,13 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{56
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{BAF6C5B0-4E4A-49BD-A000-C0496ABD738C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealership.CatalogService", "CarDealership.CatalogService\CarDealership.CatalogService.csproj", "{879B1D06-404D-4631-9E3E-9031EF118083}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.CatalogService", "CarDealership.CatalogService\CarDealership.CatalogService.csproj", "{879B1D06-404D-4631-9E3E-9031EF118083}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealership.OrderService", "CarDealership.OrderService\CarDealership.OrderService.csproj", "{16EDC640-9C84-42E8-B5A6-E5FE4D8DECB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.OrderService", "CarDealership.OrderService\CarDealership.OrderService.csproj", "{16EDC640-9C84-42E8-B5A6-E5FE4D8DECB0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3EF4D07A-AA39-4A6D-9A61-32A33F935942}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealership.CatalogService.Tests", "CarDealership.CatalogService.Tests\CarDealership.CatalogService.Tests.csproj", "{F90198FF-5C2D-41C1-B3F5-3BDEE34F8115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.CatalogService.Tests", "CarDealership.CatalogService.Tests\CarDealership.CatalogService.Tests.csproj", "{F90198FF-5C2D-41C1-B3F5-3BDEE34F8115}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.FrontEnd", "CarDealership.FrontEnd\CarDealership.FrontEnd.csproj", "{D72AB189-BD60-4836-B494-CFF3DC9F99F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.Messages", "CarDealership.Messages\CarDealership.Messages.csproj", "{69FA98F7-4A8E-4F5D-80C3-453EFB8B42C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealership.OrderService.Tests", "CarDealership.OrderService.Tests\CarDealership.OrderService.Tests.csproj", "{54ACAC8E-CEEF-4663-A824-F466F36E8ECB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{F90198FF-5C2D-41C1-B3F5-3BDEE34F8115}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F90198FF-5C2D-41C1-B3F5-3BDEE34F8115}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F90198FF-5C2D-41C1-B3F5-3BDEE34F8115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D72AB189-BD60-4836-B494-CFF3DC9F99F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D72AB189-BD60-4836-B494-CFF3DC9F99F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D72AB189-BD60-4836-B494-CFF3DC9F99F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D72AB189-BD60-4836-B494-CFF3DC9F99F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69FA98F7-4A8E-4F5D-80C3-453EFB8B42C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69FA98F7-4A8E-4F5D-80C3-453EFB8B42C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69FA98F7-4A8E-4F5D-80C3-453EFB8B42C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69FA98F7-4A8E-4F5D-80C3-453EFB8B42C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54ACAC8E-CEEF-4663-A824-F466F36E8ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54ACAC8E-CEEF-4663-A824-F466F36E8ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54ACAC8E-CEEF-4663-A824-F466F36E8ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54ACAC8E-CEEF-4663-A824-F466F36E8ECB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +59,8 @@ Global
 		{879B1D06-404D-4631-9E3E-9031EF118083} = {56594B6E-8564-452E-A887-2C71A6CD17DF}
 		{16EDC640-9C84-42E8-B5A6-E5FE4D8DECB0} = {56594B6E-8564-452E-A887-2C71A6CD17DF}
 		{F90198FF-5C2D-41C1-B3F5-3BDEE34F8115} = {3EF4D07A-AA39-4A6D-9A61-32A33F935942}
+		{D72AB189-BD60-4836-B494-CFF3DC9F99F7} = {BAF6C5B0-4E4A-49BD-A000-C0496ABD738C}
+		{54ACAC8E-CEEF-4663-A824-F466F36E8ECB} = {3EF4D07A-AA39-4A6D-9A61-32A33F935942}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2EBDCD30-A022-4910-860B-16F46706F2F6}

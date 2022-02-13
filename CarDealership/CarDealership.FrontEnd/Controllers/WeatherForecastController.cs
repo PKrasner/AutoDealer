@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarDealership.Messages;
+using MassTransit;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace CarDealership.OrderService.Controllers
+namespace CarDealership.FrontEnd.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -16,28 +17,32 @@ namespace CarDealership.OrderService.Controllers
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-
+        readonly IPublishEndpoint _publishEndpoint;
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly CatalogService _catalogService;
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, CatalogService catalogService)
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IPublishEndpoint publishEndpoint)
         {
             _logger = logger;
-            _catalogService = catalogService;
+            _publishEndpoint = publishEndpoint;
         }
 
         [HttpGet]
         public async Task<IEnumerable<WeatherForecast>> Get()
         {
-            //using(var httpClient = new HttpClient() )
-            //{
-            //    var catalogClient = new swagger1Client(httpClient);
-            //    catalogClient.BaseUrl = "http://localhost:5000";
+            await _publishEndpoint.Publish<OrderCreated>(new OrderCreated()
+            {
+                CarModelId = 3,
+                CustomerData = new CustomerData()
+                {
+                    Email = "ds",
+                    FirstName = "df",
+                    LastName = "sd",
+                    Phone = "2323"
+                },
+                SelectedCarOptions = new List<int>() { 1, 3 },
+                Comment = "Hello World!"
+            });
 
-            //    var data = await catalogClient.GetByIdAsync(1);
-            //}
-           // _catalogService.BaseUrl = new Uri(""
-            var cars = await _catalogService.GetAsync();
-           
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
